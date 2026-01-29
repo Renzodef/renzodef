@@ -1,5 +1,5 @@
 ## Hello Everyone! 👋
-My name is Renzo and I'm a Software Engineer with over three years of experience, currently working at Accenture. My journey in technology has led me through notable consulting firms where I specialized in backend development while also embracing frontend challenges, DevOps practices, and cloud infrastructure.
+My name is Renzo and I'm a Software Engineer with over five years of experience, currently working at Reply. My journey in technology has led me through notable consulting firms where I specialized in backend development while also embracing frontend challenges, DevOps practices, and cloud infrastructure.
 
 ## What I Do
 - **Full-Cycle Development Enthusiast:** Passionate about all aspects of software development, I am deeply involved in each stage of the development cycle. My enthusiasm extends beyond coding to include a keen interest in various software development methodologies.
