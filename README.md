@@ -1,12 +1,12 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=Renzo%20de%20Francesco&fontSize=45&fontAlignY=35&desc=Software%20Engineer%20%7C%20Backend%20%7C%20Cloud%20%7C%20AI%20Enthusiast&descAlignY=55&descSize=18" alt="header" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=Renzodef&fontSize=55&fontAlignY=35&desc=Software%20Engineer%20%7C%20Backend%20%7C%20Cloud%20%7C%20AI%20Enthusiast&descAlignY=55&descSize=18" alt="header" />
 </div>
 
 <div align="center">
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-vitoronzo--de--francesco-0077B5?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/vitoronzo-de-francesco/)
-[![GitHub followers](https://img.shields.io/github/followers/Renzodef?style=flat-square&label=Followers&color=0077B5)](https://github.com/Renzodef)
-![Profile Views](https://komarev.com/ghpvc/?username=Renzodef&style=flat-square&color=blueviolet)
+<a href="https://www.linkedin.com/in/vitoronzo-de-francesco/" target="_blank">
+  <img src="https://img.shields.io/badge/LinkedIn-vitoronzo--de--francesco-0077B5?style=flat-square&logo=linkedin" />
+</a>
 
 </div>
 
@@ -14,7 +14,7 @@
 
 ## 👋 Hi, I'm Renzo
 
-Software Engineer with **5+ years of experience**, currently at **Reply**. I've grown through top-tier consulting firms, specialising in backend development while staying hands-on with frontend, DevOps, and cloud infrastructure — end to end.
+Software Engineer with **5+ years of experience**. I've grown through top-tier consulting firms, specialising in backend development while staying hands-on with frontend, DevOps, and cloud infrastructure — end to end.
 
 - 🏢 **Reply** — Software Engineer
 - 🎓 MSc + BSc in **Computer Science Engineering** — Thesis on *Blockchain*
@@ -55,24 +55,7 @@ Software Engineer with **5+ years of experience**, currently at **Reply**. I've 
 ## 📊 GitHub Stats
 
 <div align="center">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=Renzodef&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true" />
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Renzodef&layout=compact&langs_count=8&theme=tokyonight" />
-</div>
-
-<div align="center">
   <img src="https://streak-stats.demolab.com/?user=Renzodef&theme=tokyonight" />
-</div>
-
----
-
-## 💬 Let's Connect
-
-Always open to interesting conversations, collaborations, and new challenges at the intersection of technology and creativity.
-
-<div align="center">
-  <a href="https://www.linkedin.com/in/vitoronzo-de-francesco/">
-    <img src="https://img.shields.io/badge/Connect_on_LinkedIn-0077B5?style=for-the-badge&logo=linkedin" />
-  </a>
 </div>
 
 ---
