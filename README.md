@@ -60,7 +60,7 @@ Software Engineer with **5+ years of experience**, currently at **Reply**. I've 
 </div>
 
 <div align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Renzodef&theme=tokyonight" />
+  <img src="https://streak-stats.demolab.com/?user=Renzodef&theme=tokyonight" />
 </div>
 
 ---
