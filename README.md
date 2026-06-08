@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=Renzodef&fontSize=55&fontAlignY=35&desc=Software%20Engineer%20%7C%20Backend%20%7C%20Cloud%20%7C%20AI%20Enthusiast&descAlignY=55&descSize=18" alt="header" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=Renzodef&fontSize=55&fontAlignY=35&desc=Software%20Engineer%20%7C%20Backend%20%7C%20AI%20Enthusiast&descAlignY=55&descSize=18" alt="header" />
 </div>
 
 <div align="center">
@@ -41,13 +41,11 @@ Software Engineer with **5+ years of experience**. I've grown through top-tier c
   <img src="https://img.shields.io/badge/Apache_Flink-E6526F?style=for-the-badge&logo=apacheflink&logoColor=white" />
 </div>
 
-### DevOps & Cloud
+### DevOps
 <div>
   <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
   <img src="https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white" />
-  <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=aws&logoColor=white" />
-  <img src="https://img.shields.io/badge/Azure-0078D4?style=for-the-badge&logo=azure&logoColor=white" />
-  <img src="https://img.shields.io/badge/GCP-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white" />
+  <img src="https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white" />
 </div>
 
 ### Databases
