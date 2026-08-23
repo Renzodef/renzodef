@@ -27,14 +27,15 @@ jobs:
           # normalizzata, quindi ogni scostamento futuro e' un errore vero.
           #
           # Regole:
-          #  1. autore: nome esattamente "Vitoronzo De Francesco" ed email
-          #     renzodefrancesco@gmail.com;
+          #  1. autore: nome esattamente "Vitoronzo De Francesco" e una delle
+          #     due email di Vitoronzo (gmail o reply.it);
           #  2. committer: come l'autore, oppure "GitHub <noreply@github.com>"
           #     (merge e revert fatti dall'interfaccia web di GitHub);
           #  3. vietata ogni identita' o trailer riferita ad assistenti AI.
           violations="$(git log --format='%H%x09%an%x09%ae%x09%cn%x09%ce' HEAD | awk -F '\t' '
             function author_ok(n, e) {
-              return n == "Vitoronzo De Francesco" && e == "renzodefrancesco@gmail.com"
+              return n == "Vitoronzo De Francesco" \
+                && (e == "renzodefrancesco@gmail.com" || e == "v.defrancesco@reply.it")
             }
             function committer_ok(n, e) {
               return author_ok(n, e) || (n == "GitHub" && e == "noreply@github.com")
