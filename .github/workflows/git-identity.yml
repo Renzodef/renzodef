@@ -1,11 +1,13 @@
 name: Git identity
 
-# Solo push e pull_request: niente cron, per non consumare minuti Actions
-# del piano gratuito su repository private.
 on:
-  push:
   pull_request:
+  push:
   workflow_dispatch:
+
+concurrency:
+  group: identity-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -14,26 +16,39 @@ jobs:
   verify:
     name: verify
     runs-on: ubuntu-latest
-    timeout-minutes: 5
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           fetch-depth: 0
+          # The default pull_request checkout is GitHub's synthetic merge
+          # commit. Check the contributor head instead, otherwise that merge
+          # commit's GitHub-generated identity would reject valid PRs.
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - name: Reject unauthorized identities and AI attributions
         shell: bash
         run: |
           set -euo pipefail
-          # Controllo sull'INTERA storia raggiungibile: la repo e' stata
-          # normalizzata, quindi ogni scostamento futuro e' un errore vero.
-          #
-          # Regole:
-          #  1. autore: nome esattamente "Vitoronzo De Francesco" e una delle
-          #     due email di Vitoronzo (gmail o reply.it);
-          #  2. committer: come l'autore, oppure "GitHub <noreply@github.com>"
-          #     (merge e revert fatti dall'interfaccia web di GitHub);
-          #  3. vietata ogni identita' o trailer riferita ad assistenti AI.
-          violations="$(git log --format='%H%x09%an%x09%ae%x09%cn%x09%ce' HEAD | awk -F '\t' '
+          case "${{ github.event_name }}" in
+            pull_request)
+              git fetch --no-tags origin "${{ github.base_ref }}"
+              base="$(git merge-base "origin/${{ github.base_ref }}" HEAD)"
+              range="$base..HEAD"
+              ;;
+            push)
+              before="${{ github.event.before }}"
+              if [[ "$before" =~ ^0+$ ]]; then
+                git fetch --no-tags origin main
+                base="$(git merge-base origin/main HEAD)"
+                range="$base..HEAD"
+              else
+                range="$before..${{ github.sha }}"
+              fi
+              ;;
+            *)
+              range="HEAD"
+              ;;
+          esac
+          violations="$(git log --format='%H%x09%an%x09%ae%x09%cn%x09%ce' "$range" | awk -F '\t' '
             function author_ok(n, e) {
               return n == "Vitoronzo De Francesco" \
                 && (e == "renzodefrancesco@gmail.com" || e == "v.defrancesco@reply.it")
@@ -48,17 +63,12 @@ jobs:
             echo "$violations" >&2
             exit 1
           fi
-          ai="$(git log --format='%H%x09%an %ae %cn %ce' HEAD | grep -iE 'claude|anthropic|copilot@|openai' | cut -f1 || true)"
-          if [[ -n "$ai" ]]; then
-            echo "AI-attributed commits are not allowed:" >&2
-            echo "$ai" >&2
-            exit 1
-          fi
-          trailers="$(git log --format='%H%x09%(trailers:key=Co-Authored-By,valueonly,separator=%x2C)' HEAD \
-            | awk -F '\t' 'tolower($2) ~ /claude|anthropic|copilot|openai|bot/ { print $1 }')"
-          if [[ -n "$trailers" ]]; then
-            echo "AI co-author trailers are not allowed:" >&2
-            echo "$trailers" >&2
-            exit 1
-          fi
-          echo "OK: every commit is authored by the authorized identity."
+          while IFS= read -r commit; do
+            [[ -n "$commit" ]] || continue
+            footers="$(git show -s --format=%B "$commit" | git interpret-trailers --parse)"
+            if [[ -n "$footers" ]]; then
+              echo "Commit $commit contains prohibited trailing footers:" >&2
+              echo "$footers" >&2
+              exit 1
+            fi
+          done < <(git rev-list "$range")
